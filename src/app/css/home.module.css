@@ -1,0 +1,102 @@
+.home {
+  width: 100%;
+  position: relative;
+}
+
+.banner {
+  text-align: center;
+  background-color: black;
+  position: relative;
+  z-index: 1;
+}
+
+.banner::before{
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    background-color: #004EE4;
+    width: 100%;
+    height: 33px;
+    z-index: -1;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
+
+.title{
+    position: absolute;
+    top: 150px;
+
+    bottom: auto;
+    font-size: 3rem;
+    text-shadow: 10px 10px black;    font-family: DELTARUNE;
+    color: white;
+    text-align: center;
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%);
+    right: auto;
+    z-index: 200;
+}
+
+.welcomeText{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+    font-family: Determination;
+}
+
+.welcomeText > h1{
+    font-weight: 100;
+    font-size: 2rem;
+}
+
+.welcomeText > h2{
+        margin-top: 20px;
+
+    font-weight: 100;
+    font-size: 1.5rem;
+}
+
+.thrashContainer{
+    margin-top: 40px;
+    justify-content: space-evenly;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+    
+}
+
+.thrash{
+    background-color: rgb(37, 37, 37);
+    padding: 20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    justify-content: space-evenly;
+    width:200px;
+    aspect-ratio: 1/1.3;
+    border-radius: 10%;
+}
+
+
+
+.thrash a{
+    font-size: 2.2rem;
+    font-family: Determination;
+    
+}
+
+.thrash a:hover{
+    text-decoration: underline;
+}
+

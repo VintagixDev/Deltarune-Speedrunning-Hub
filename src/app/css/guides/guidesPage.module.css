@@ -1,0 +1,35 @@
+.guide{
+    width: 100%;
+    font-family: Determination;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 100px;
+}
+
+.guideTitle{
+    font-size: 2.3rem;
+}
+
+.chapterContainers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow-wrap: 3;
+}
+
+.chapter a{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    
+}
+
+.chapter a:hover{
+    text-decoration: underline;
+}
+
+.chapter p{
+    font-size: 2rem;
+}

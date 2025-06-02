@@ -1,0 +1,96 @@
+.container{
+    margin-top: 75px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.stratTitle{
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    margin-left: 30px;
+    margin-top: 50px;
+    text-decoration: underline;
+}
+
+.sectionContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 25px;
+    row-gap: 25px;
+    margin-bottom: 20px;
+
+}
+
+
+.sectionContainer h1{
+    font-weight: normal;
+    font-size: 2rem;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+
+}
+
+.sectionContainer h1:first-child{
+    border-bottom: 5px rgb(59, 59, 59) solid;
+}
+
+
+.firstBox{
+    grid-column: span 2 / span 2;
+}
+
+.secondBox{
+    grid-column-start: 3;
+}
+
+.thirdBox{
+    grid-column-start: 4;
+}
+
+
+.sectionContainer a{
+    color: rgb(2, 111, 255);
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    min-width: 0px;
+    min-height: 0px;
+    font-size: 1.3rem;
+    word-wrap: break-word;
+    word-break: break-all;
+    
+    max-width: 100%;
+}
+
+.sectionContainer a:hover{
+    text-decoration: underline;
+}
+
+.sectionContainer p{
+    min-width: 0px;
+    min-height: 0px;
+    font-size: 1.3rem;
+    word-wrap: break-word;
+    word-break: break-all;
+    
+    max-width: 100%;
+}
+
+.button{
+    width: 40px;
+    height: 40px;    
+    border: none;
+    border-radius: 10px;
+}
+
+
+.button:hover{
+    cursor: pointer;
+    filter: brightness(85%);
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+}

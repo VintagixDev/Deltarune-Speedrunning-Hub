@@ -1,0 +1,33 @@
+.footer{
+    
+    padding-top: 15px;
+    background-color:rgb(27, 27, 27);
+    width: 100%;
+    padding-bottom: 30px; 
+ 
+
+    
+}
+
+.links a{
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+
+
+.footerContainer{
+    display:flex;
+    justify-content: space-evenly;
+    
+}
+
+.links li{
+    list-style: none;
+}
+
+.links p{
+    margin-top: 15px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}

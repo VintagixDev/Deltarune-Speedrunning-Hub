@@ -1,0 +1,92 @@
+@font-face{
+    font-family: DELTARUNE;
+    src:url("../../fonts/deltarune.ttf");
+}
+@font-face{
+    font-family: Determination;
+    src:url("../../fonts/Determination2.otf")
+}
+@font-face{
+    font-family: Inter;
+    src:url("../../fonts/Inter.ttf")
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 10%;
+    background-color:rgb(27, 27, 27)
+}
+.navbar li {
+    text-decoration: none;
+    list-style: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+.navbar__child{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+    display: flex;
+    gap: 30px;
+}
+.navbar__child a{
+    font-size: 1.75rem;
+    font-family: Determination;
+}
+
+.discordBtn{
+    width: 300px;
+    position: relative;
+    background-color: #5865F2;
+    border: none;
+    border-radius: 10px;
+    display:flex;
+}
+.discordBtn:hover{
+    cursor: pointer;
+}
+
+.discordImage{
+position: relative;
+border: none;
+left: 10px;
+top: 2px;
+
+}
+.discordBtn p{
+    text-align: right;
+    
+    margin-left: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.5rem;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.profileImage{
+    border-radius: 50%
+}
+
+.profileContainer{
+    display:flex;
+    gap: 16px;
+    color: yellow;
+}
+
+.navbar__child p{
+    font-size: 1.5rem;
+    
+}
+
+.logout{
+    margin-top: 10px;
+    margin-right: 10px;
+}
