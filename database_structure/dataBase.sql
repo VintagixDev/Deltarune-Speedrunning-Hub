@@ -1,5 +1,5 @@
 CREATE TABLE users(
-	userID int NOT NULL AUTO_INCREMENT,
+    userID int NOT NULL AUTO_INCREMENT,
     userDisplayName varchar(32) NOT NULL,
     userName varchar(32) NOT NULL,
     userProfilePicture text NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE users(
 
 
 CREATE TABLE chapters(
-	chapterID int NOT NULL AUTO_INCREMENT,
+    chapterID int NOT NULL AUTO_INCREMENT,
     chapterName varchar(25) NOT NULL,
     chapterImage text not null,
     chapterLink text not null,
@@ -21,7 +21,7 @@ CREATE TABLE chapters(
 );
 
 CREATE TABLE sections(
-	sectionID int NOT NULL AUTO_INCREMENT,
+    sectionID int NOT NULL AUTO_INCREMENT,
     sectionName varchar(25) NOT NULL,
     sectionColor varchar(6) NOT NULL,
     sectionListPriority int not null,
@@ -32,7 +32,7 @@ CREATE TABLE sections(
 );
 
 CREATE TABLE strats(
-	stratID int NOT NULL AUTO_INCREMENT,
+    stratID int NOT NULL AUTO_INCREMENT,
     stratName text NOT NULL,
     stratDescription text NOT NULL,
     stratVideo text,
@@ -40,8 +40,7 @@ CREATE TABLE strats(
     chapterID int NOT NULL,
     userID int NOT NULL,
     PRIMARY KEY (stratID),
-	FOREIGN KEY (chapterID) REFERENCES chapters(chapterID),
+    FOREIGN KEY (chapterID) REFERENCES chapters(chapterID),
     FOREIGN KEY (sectionID) REFERENCES sections(sectionID),
     FOREIGN KEY (userID) REFERENCES users(userID)
 );
-
