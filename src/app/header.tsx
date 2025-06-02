@@ -70,7 +70,7 @@ export default async function Header(){
                 <li><a href="/guides">Guides</a></li>
                 <li><a href="https://speedrun.com/deltarune/resources/" target="_blank">Resources</a></li>
                 <li><a href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">Retimer</a></li>
-                
+                <li><a href="/about">About</a></li>
             </ul>
             <ul className={navbar.navbar__child}>
                 <li><a href="/discord" target="_blank">Discord</a></li>
