@@ -17,7 +17,7 @@ export default function Footer(){
             <ul className={css.links}>
                 <p>Pages</p>
                 <li><a href="/guides">Guides</a></li>
-                <li><a href="/about">About</a></li>
+                
             </ul>
 
             <ul className={css.links}>
