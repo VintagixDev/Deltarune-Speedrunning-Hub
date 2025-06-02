@@ -13,7 +13,7 @@ export async function GET(request) {
   const user = await getSession()
   if(user.error) redirect('/guides/')
   if(user.banned == 1) redirect('/guides/')
-  const _strat = await fetch(`http://localhost:3000/api/strats/get?stratID=${queryParams}`)
+  const _strat = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/strats/get?stratID=${queryParams}`)
   var strat = await _strat.json();
   
   strat = strat[0]

@@ -13,7 +13,7 @@ import getSession from '@/lib/auth';
 
 
 async function getStratFromID(id){
-    const res = await fetch(`http://localhost:3000/api/strats/get?stratID=${id}`);
+    const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/strats/get?stratID=${id}`);
     const response = await res.json()
     return response
 }

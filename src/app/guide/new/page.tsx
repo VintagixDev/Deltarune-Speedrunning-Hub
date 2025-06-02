@@ -4,7 +4,6 @@ import css from "@/app/css/guides/newStrat.module.css";
 import MarkdownEditor from "@/lib/component/MarkdownEditor";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import getSession from "@/lib/auth";
 
 async function getSection(chapter) {
   const res = await fetch(`/api/section/get?chapterName=${chapter}`);

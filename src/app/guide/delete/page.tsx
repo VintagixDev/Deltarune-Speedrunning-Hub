@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 
 async function getStratFromID(id){
-    const res = await fetch(`http://localhost:3000/api/strats/get?stratID=${id}`);
+    const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/strats/get?stratID=${id}`);
     const response = await res.json()
     console.log(response)
     return response
@@ -25,7 +25,7 @@ export default async function DeleteStrat({ searchParams }) {
         
         if(strat[0].stratID){
             console.log("in")
-            const res = await fetch(`http://localhost:3000/api/strats/delete?stratID=${strat[0].stratID}`); 
+            const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/strats/delete?stratID=${strat[0].stratID}`); 
             console.log(res.ok)
             
             

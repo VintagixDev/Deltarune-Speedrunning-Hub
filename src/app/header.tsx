@@ -44,7 +44,7 @@ function getUserProfile(user){
     )
 }
 function getDiscordLogButton(){
-    return (<a href="https://discord.com/oauth2/authorize?client_id=1377396893277225034&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fdiscord%2Fcallback&scope=identify">
+    return (<a href={`https://discord.com/oauth2/authorize?client_id=1377396893277225034&response_type=code&redirect_uri=http%3A%2F%2F${process.env.HOST}%3A${process.env.IP_PORT}%2Fapi%2Fdiscord%2Fcallback&scope=identify`}>
         <button className={navbar.discordBtn}>
             <div className={navbar.discordImage}><Image
                 src={discordImg}

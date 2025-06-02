@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default async function Guides(){
 
-    const res = await fetch(`http://localhost:3000/api/chapters/get`);
+    const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/chapters/get`);
     const response = await res.json();
     
     response.map((chapter) =>(

@@ -12,19 +12,19 @@ import NotFound from "@/app/not-found"
 import getSession from "@/lib/auth";
 
 async function getStratsFromChapter(chapter){
-  const res = await fetch(`http://localhost:3000/api/strats/get?chapterName=${chapter}`);
+  const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/strats/get?chapterName=${chapter}`);
   const response = await res.json()
   return response
 }
 
 async function getSectionsFromChapter(chapter){
- const res = await fetch(`http://localhost:3000/api/section/get?chapterName=${chapter}`);
+ const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/section/get?chapterName=${chapter}`);
  
  return await res.json();
 }
 
 async function getChapter(chapter){
-  const res = await fetch(`http://localhost:3000/api/chapters/get?chapterName=${chapter}`);
+  const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/chapters/get?chapterName=${chapter}`);
   return await res.json();
 }
 

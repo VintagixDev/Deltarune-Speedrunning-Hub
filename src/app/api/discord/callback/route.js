@@ -21,13 +21,12 @@ export async function GET(req){
             'client_secret': 'u9oSPXH-HL-V1obwnQ6q60udgO_LpkFY',
             'grant_type': 'authorization_code',
             'code': codeResult,
-            'redirect_uri': 'http://localhost:3000/api/discord/callback',
+            'redirect_uri': `http://${process.env.HOST}:${process.env.IP_PORT}/api/discord/callback`,
         })
     }
     let discord_data = await fetch('https://discord.com/api/oauth2/token', options).then((response) => {
         return response.json();
     })
-    console.log(discord_data.access_token)  
     const user = await fetch("https://discord.com/api/users/@me", {
         headers: { Authorization: `Bearer ${discord_data.access_token}`}
     }).then((response) =>{
