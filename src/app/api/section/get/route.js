@@ -11,7 +11,7 @@ export async function GET(req){
     let query = "SELECT * FROM sections" 
     
     if(queryParams != null){
-        query = `SELECT sections.* FROM sections WHERE chapterID = (SELECT chapterID from chapters where chapterLink = "${queryParams}")`;
+        query = `SELECT sections.* FROM sections WHERE chapterID = (SELECT chapterID from chapters where chapterLink = "${queryParams}") ORDER BY sectionListPriority;`;
     }
     const [results] = await connection.execute(query, [])
     connection.end()
