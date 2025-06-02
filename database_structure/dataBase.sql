@@ -20,22 +20,6 @@ CREATE TABLE chapters(
     PRIMARY KEY(chapterID)
 );
 
-
-
-CREATE TABLE strats(
-	stratID int NOT NULL AUTO_INCREMENT,
-    stratName text NOT NULL,
-    stratDescription text NOT NULL,
-    stratVideo text,
-    sectionID text NOT NULL,
-    chapterID int NOT NULL,
-    userID int NOT NULL,
-    PRIMARY KEY (stratID),
-	FOREIGN KEY (chapterID) REFERENCES chapter(chapterID),
-    FOREIGN KEY (sectionID) REFERENCES sections(sectionID),
-    FOREIGN KEY (userID) REFERENCES users(userID)
-);
-
 CREATE TABLE sections(
 	sectionID int NOT NULL AUTO_INCREMENT,
     sectionName varchar(25) NOT NULL,
@@ -43,6 +27,21 @@ CREATE TABLE sections(
     sectionListPriority int not null,
     chapterID int not null,
     PRIMARY KEY(sectionID),
-    FOREIGN KEY(chapterID) REFERENCES chapter(chapterID)
+    FOREIGN KEY(chapterID) REFERENCES chapters(chapterID)
 
 );
+
+CREATE TABLE strats(
+	stratID int NOT NULL AUTO_INCREMENT,
+    stratName text NOT NULL,
+    stratDescription text NOT NULL,
+    stratVideo text,
+    sectionID int NOT NULL,
+    chapterID int NOT NULL,
+    userID int NOT NULL,
+    PRIMARY KEY (stratID),
+	FOREIGN KEY (chapterID) REFERENCES chapters(chapterID),
+    FOREIGN KEY (sectionID) REFERENCES sections(sectionID),
+    FOREIGN KEY (userID) REFERENCES users(userID)
+);
+
