@@ -31,7 +31,7 @@ async function getChapter(chapter){
 function getActionButtons(user, strat){
     if(user.error != null) return;
     if(user.banned == 1) return;
-    if(user.userID != strat.userID || user.userRole >= 1){
+    if(user.userID == strat.userID || user.userRole >= 1){
         return (
             <div className={css.buttons}>
                 <a href={`/guide/edit?stratID=${strat.stratID}`}>
@@ -60,7 +60,8 @@ function getActionButtons(user, strat){
 }
 
 function getNewButton(user, chapter){
-  
+  if(user.error != null) return;
+  if(user.banned == 1) return;
   return (
     <a href={`/guide/new?chapterLink=${chapter[0].chapterLink}`}>
       <button style={{backgroundColor: 'rgb(0, 219, 11)'}} className={css.button}>

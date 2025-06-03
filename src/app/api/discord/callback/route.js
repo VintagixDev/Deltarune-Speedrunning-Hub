@@ -65,14 +65,14 @@ export async function GET(req){
             var cookie = await cookies();
             await cookie.set('session_token', sessionToken, {
                 httpOnly: false,
-                secure: true,
+                secure: false,
                 sameSite: 'strict',
                 maxAge:( 60 * 60 * 24 * 7), // 7 days
                 path: '/',
             });
             
         }catch(e){
-            console.log(e)
+            console.log("ERROR:" + e)
         }
         
         

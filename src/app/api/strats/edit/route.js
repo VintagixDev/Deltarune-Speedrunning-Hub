@@ -22,12 +22,24 @@ export async function POST(request) {
   if(user.banned == 1) return NextResponse.json({message: 'You are banned'});
   let query;
   if (stratID) {
-    query = `
+    if(user.userRole == 0){
+
+      
+      query = `
       UPDATE strats 
       SET stratName = ?, stratDescription = ?, stratVideo = ?, chapterID = ?, sectionID = ?
       WHERE stratID = ? AND userID = ?
-    `;
-    await dbConnection.execute(query, [name, markdown, video || null, chapter, section, stratID, user.userID]);
+      `;
+      await dbConnection.execute(query, [name, markdown, video || null, chapter, section, stratID, user.userID]);
+    }
+    if(user.userRole > 0){
+      query = `
+      UPDATE strats 
+      SET stratName = ?, stratDescription = ?, stratVideo = ?, chapterID = ?, sectionID = ?
+      WHERE stratID = ?
+      `;
+      await dbConnection.execute(query, [name, markdown, video || null, chapter, section, stratID]);
+    }
     return NextResponse.json({ message: "strat updated successfully" });
   }
     return NextResponse.json({ message: "strat doesn't exist" });

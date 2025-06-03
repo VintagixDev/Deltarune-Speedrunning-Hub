@@ -8,6 +8,7 @@ import flameThrash from "@/images/thrash/flame.png"
 import laserThrash from "@/images/thrash/laser.png"
 export default async function Home() {
 
+  console.log(process.env.USER);
   return (
 
     
@@ -47,7 +48,8 @@ export default async function Home() {
        </div>
 
        <div className={css.thrash} >
-        <a href="/resources">
+        
+        <a href="https://speedrun.com/deltarune/resources/" target="_blank">
           <Image
           src={swordThrash}
           alt="ThrashMachine"
@@ -55,18 +57,18 @@ export default async function Home() {
           className={css.thrashImage}
           />
           </a>
-          <a href="/resources">Resources</a>
+          <a href="https://speedrun.com/deltarune/resources/" target="_blank">Resources</a>
        </div>
 
        <div className={css.thrash} >
-          <a href="/retimer">
+          <a href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">
           <Image
           src={flameThrash}
           alt="ThrashMachine"
           width={185}
           className={css.thrashImage}
           /></a>
-          <a href="/retimer">Retimer</a>
+          <a href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">Retimer</a>
        </div>
 
        <div className={css.thrash} >
