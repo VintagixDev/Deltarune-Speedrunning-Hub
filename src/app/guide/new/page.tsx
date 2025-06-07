@@ -88,6 +88,7 @@ const handleSubmit = async (e) => {
     }
 };
 
+
 return (
     <div className={css.newStratContainer}>
       <div className={css.header}>
@@ -96,7 +97,7 @@ return (
 
       <div className={css.formContainer}>
         <form onSubmit={handleSubmit}>
-          <p>Name<a>*</a>:</p>
+          <p>Guide Name<a>*</a>:</p>
           <label htmlFor="name">
             <input type="text" name="name" placeholder="Input name..." maxLength={70} required />
           </label>

@@ -6,9 +6,10 @@ import duckThrash from "@/images/thrash/duck.png"
 import swordThrash from "@/images/thrash/sword.png"
 import flameThrash from "@/images/thrash/flame.png"
 import laserThrash from "@/images/thrash/laser.png"
+
+import Link from "next/link";
 export default async function Home() {
 
-  console.log(process.env.USER);
   return (
 
     
@@ -36,51 +37,50 @@ export default async function Home() {
       <div className={css.thrashContainer}>
 
        <div className={css.thrash} >
-        <a href="/guides">
+        <Link href="/guides">
           <Image
           src={duckThrash}
           alt="ThrashMachine"
           height={125}
           className={css.thrashImage}
-          href="/guides"
-          /></a>
-          <a href="/guides">Guides</a>
+          /></Link>
+          <Link href="/guides">Guides</Link>
        </div>
 
        <div className={css.thrash} >
         
-        <a href="https://speedrun.com/deltarune/resources/" target="_blank">
+        <Link href="https://speedrun.com/deltarune/resources/" target="_blank">
           <Image
           src={swordThrash}
           alt="ThrashMachine"
           height={125}
           className={css.thrashImage}
           />
-          </a>
-          <a href="https://speedrun.com/deltarune/resources/" target="_blank">Resources</a>
+          </Link>
+          <Link href="https://speedrun.com/deltarune/resources/" target="_blank">Resources</Link>
        </div>
 
        <div className={css.thrash} >
-          <a href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">
+          <Link href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">
           <Image
           src={flameThrash}
           alt="ThrashMachine"
           width={185}
           className={css.thrashImage}
-          /></a>
-          <a href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">Retimer</a>
+          /></Link>
+          <Link href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">Retimer</Link>
        </div>
 
        <div className={css.thrash} >
-          <a href="/about">
+          <Link href="/about">
           <Image
           src={laserThrash}
           alt="ThrashMachine"
           width={160}
           className={css.thrashImage4}
           
-          /></a>
-          <a href="/about">About</a>
+          /></Link>
+          <Link href="/about">About</Link>
        </div>
 
       </div>

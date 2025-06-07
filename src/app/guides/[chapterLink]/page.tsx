@@ -7,8 +7,10 @@ import backImage from "@/images/buttons/back.png"
 import newImage from "@/images/buttons/new.png"
 
 import Image from "next/image";
+import Link from "next/link";
 import NotFound from "@/app/not-found"
 
+import ActionButtonsClient from '@/lib/component/ActionButtonsClient'
 import getSession from "@/lib/auth";
 
 async function getStratsFromChapter(chapter){
@@ -28,42 +30,24 @@ async function getChapter(chapter){
   return await res.json();
 }
 
-function getActionButtons(user, strat){
-    if(user.error != null) return;
-    if(user.banned == 1) return;
-    if(user.userID == strat.userID || user.userRole >= 1){
-        return (
-            <div className={css.buttons}>
-                <a href={`/guide/edit?stratID=${strat.stratID}`}>
-                    <button style={{backgroundColor: 'rgb(221, 133, 2)'}} className={css.button}>
-                      <Image 
-                      src={editImage}
-                      alt="View"
-                      width={30}
-                      height={30}
-                      style={{marginLeft: "1px"}}
-                      />
-                    </button></a>
-                    <a href={`/api/strats/delete?stratID=${strat.stratID}`}>
-                    <button style={{backgroundColor: 'rgb(221, 2, 2)'}} className={css.button}>
-                      <Image 
-                      src={deleteImage}
-                      alt="delete"
-                      width={25}
-                      height={25}
-                      style={{marginTop: "2px"}}
-                      />
-                    </button></a>
-            </div>
-        )
-    }
+async function deleteStrat(stratID) {
+  try {
+    const res = await fetch(`/api/strats/delete?stratID=${stratID}`);
+    const data = await res.json();
+    console.log("DELETE RESPONSE:", data);
+  } catch (err) {
+    console.error("DELETE ERROR:", err);
+  }
 }
+
+
+
 
 function getNewButton(user, chapter){
   if(user.error != null) return;
   if(user.banned == 1) return;
   return (
-    <a href={`/guide/new?chapterLink=${chapter[0].chapterLink}`}>
+    <Link href={`/guide/new?chapterLink=${chapter[0].chapterLink}`}>
       <button style={{backgroundColor: 'rgb(0, 219, 11)'}} className={css.button}>
         <Image 
           src={newImage}
@@ -75,7 +59,7 @@ function getNewButton(user, chapter){
         
         />
       </button>
-    </a>
+    </Link>
   )
 }
 
@@ -100,13 +84,13 @@ export default async function Page({
       <div>
         <div className={css.stratTitle}>
                     
-          <a href="/guides">
+          <Link href="/guides">
           <Image
             src={backImage}
             alt="Go Back"
             width={40} 
           />
-          </a>
+          </Link>
           <h1 key={chapter[0].chapterID}>{chapter[0].chapterName} Guides</h1>
           {newButton}
         </div>
@@ -127,10 +111,10 @@ export default async function Page({
 
                 <div className={css.sectionContainer} key={strat.stratID}>
 
-                  <a className={css.firstBox} href={`/guide/${strat.stratID}`}>{strat.stratName}</a>
+                  <Link className={css.firstBox} href={`/guide/${strat.stratID}`}>{strat.stratName}</Link>
                   <p className={css.secondBox}>by {strat.userDisplayName}</p>
                   <div className={css.buttons}>
-                  <a href={`/guide/${strat.stratID}`}>
+                  <Link href={`/guide/${strat.stratID}`}>
                     <button className={css.button} style={{backgroundColor: 'rgb(9, 202, 3)'}}>
                       <Image 
                       src={viewImage}
@@ -139,8 +123,8 @@ export default async function Page({
                       height={35}
                       style={{marginTop: "2px"}}
                       />
-                    </button></a>
-                    {getActionButtons(user, strat)}
+                    </button></Link>
+                    <ActionButtonsClient user={user} strat={strat} />
                     </div>
                 </div>
                 

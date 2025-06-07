@@ -111,7 +111,7 @@ return (
 
       <div className={css.formContainer}>
         <form onSubmit={handleSubmit}>
-          <p>Name<a>*</a>:</p>
+          <p>Guide Name<a>*</a>:</p>
           <label htmlFor="name">
             <input type="text" name="name" defaultValue={strat?.stratName} placeholder="Input name..."  maxLength={70} required />
           </label>
@@ -131,6 +131,7 @@ return (
           <label htmlFor="video">
             <input type="text" name="video" defaultValue={strat?.stratVideo} placeholder="Video link..." maxLength={70} />
           </label>
+
 
           <p>Guide Content<a>*</a>:</p>
           <MarkdownEditor value={markdown} onChange={(val) => setMarkdown(val || "")} />

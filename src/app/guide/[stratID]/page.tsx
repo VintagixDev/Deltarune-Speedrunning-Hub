@@ -9,6 +9,8 @@ import backImage from "@/images/buttons/back.png";
 import editImage from "@/images/buttons/edit.png"
 import deleteImage from "@/images/buttons/delete.png";
 
+import ActionButtonsClient from '@/lib/component/ActionButtonsClient'
+
 import getSession from '@/lib/auth';
 
 
@@ -20,8 +22,10 @@ async function getStratFromID(id){
 
 var video;
 function getVideo(strat){
+    console.log(strat.stratVideo)
     if(strat.stratVideo != null){
         var video = strat.stratVideo.replace("watch?v=", "embed/")
+        video = video.replace("youtu.be", "youtube.com/embed/")
         return(
             <iframe width="642" height="358" src={video} allowFullScreen />
 )
@@ -30,37 +34,6 @@ function getVideo(strat){
     }
 }
 
-function getActionButtons(user, strat){
-    if(user.error != null) return;
-    if(user.banned == 1) return;
-    if(user.userID == strat.userID || user.userRole >= 1){
-        
-        return (
-            <div className={css.buttons}>
-                <a href={`/guide/edit?stratID=${strat.stratID}`}>
-                    <button style={{backgroundColor: 'rgb(221, 133, 2)'}}>
-                      <Image 
-                      src={editImage}
-                      alt="View"
-                      width={30}
-                      height={30}
-                      style={{marginLeft: "1px"}}
-                      />
-                    </button></a>
-                    <a href={`/api/strats/delete?stratID=${strat.stratID}`}>
-                    <button style={{backgroundColor: 'rgb(221, 2, 2)'}}>
-                      <Image 
-                      src={deleteImage}
-                      alt="delete"
-                      width={25}
-                      height={25}
-                      style={{marginTop: "2px"}}
-                      />
-                    </button></a>
-            </div>
-        )
-    }
-}
 
 export default async function Page({
     params,
@@ -72,7 +45,6 @@ export default async function Page({
     const strat = _strat[0]
     video = getVideo(strat);
     var user = await getSession();
-    const buttons = getActionButtons(user, strat)
 
    return (
     <div className={css.stratContainer}>
@@ -91,7 +63,9 @@ export default async function Page({
       <div className={css.headerSubtitle}>
 
         <h2 style={{backgroundColor:`#${strat.sectionColor}`}}>{strat.sectionName}</h2>
-            {buttons}
+            <div style={{marginTop: "10px"}}>
+                <ActionButtonsClient user={user} strat={strat}/>
+            </div>
       </div>
         <div className={css.stratDescription}>
             {video}
@@ -105,6 +79,3 @@ export default async function Page({
   );
 }
 
-   //   <ReactMarkdown remarkPlugins={[remarkGfm]}>
-  //      {strategy.description}
-//      </ReactMarkdown>

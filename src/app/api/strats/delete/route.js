@@ -11,22 +11,23 @@ export async function GET(request) {
     return redirect('/guides/')
   }
   const user = await getSession()
-  if(user.error) redirect('/guides/')
-  if(user.banned == 1) redirect('/guides/')
+  if(user.error) NextResponse.json("ERROR: user not logged in")
+  if(user.banned == 1) NextResponse.json("ERROR: user banned")
   const _strat = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/strats/get?stratID=${queryParams}`)
   var strat = await _strat.json();
   
   strat = strat[0]
-  if(strat == undefined) redirect('/guides/')
+  if(strat == undefined) NextResponse.json("ERROR: strat not found")
   if(user.userID == strat.userID || user.userRole >= 1){
 
         const dbConnection = await DBConnection()
 
         const query = `DELETE FROM strats WHERE stratID = ${queryParams}`
         await dbConnection.execute(query, [])
-        redirect('/guides/'+strat.chapterLink)
-        return NextResponse.json({ message: "strat deleted successfully" });
+        console.log("STRAT DELETED")
+        
+        return NextResponse.json({ message: "strat deleted successfully", status: "SUCCESS" });
   }
-  redirect('/guides/')
+  
   return NextResponse.json({error: "you cannot delete this strat"})
 }

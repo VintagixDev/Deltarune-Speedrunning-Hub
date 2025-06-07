@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LoginSuccess() {
   const router = useRouter();
@@ -11,5 +12,5 @@ export default function LoginSuccess() {
     router.refresh(); // 🔥 Forces a reload to reflect session
   }, [router]);
 
-  return <p style={{marginBottom:1000+'px'}}>Redirecting... If you do not get redirected, please <a href="/" style={{color:'blue'}}>click here</a></p>;
+  return <p style={{marginBottom:1000+'px'}}>Redirecting... If you do not get redirected, please <Link href="/" style={{color:'blue'}}>click here</Link></p>;
 }

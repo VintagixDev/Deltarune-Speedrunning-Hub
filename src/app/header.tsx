@@ -7,6 +7,7 @@ import logoutImg from "@/images/logout/logout_icon.png"
 import navbar from "@/app/css/navbar.module.css";
 
 import Image from "next/image";
+import Link from "next/link";
 import getSession from "@/lib/auth"
 
 var userStatus;
@@ -44,7 +45,12 @@ function getUserProfile(user){
     )
 }
 function getDiscordLogButton(){
-    return (<a href={`https://discord.com/oauth2/authorize?client_id=1377396893277225034&response_type=code&redirect_uri=http%3A%2F%2F${process.env.HOST}%3A${process.env.IP_PORT}%2Fapi%2Fdiscord%2Fcallback&scope=identify`}>
+    var link;
+    link = `https://discord.com/oauth2/authorize?client_id=1377396893277225034&response_type=code&redirect_uri=http%3A%2F%2F${process.env.IP_DNS}%2Fapi%2Fdiscord%2Fcallback&scope=identify`
+    if(process.env.IP_DNS != "fastlittleboys.com"){
+        link = `https://discord.com/oauth2/authorize?client_id=1377396893277225034&response_type=code&redirect_uri=http%3A%2F%2F${process.env.HOST}%3A${process.env.IP_PORT}%2Fapi%2Fdiscord%2Fcallback&scope=identify`
+    }
+    return (<Link href={link}>
         <button className={navbar.discordBtn}>
             <div className={navbar.discordImage}><Image
                 src={discordImg}
@@ -52,7 +58,7 @@ function getDiscordLogButton(){
                 width={50} /></div>
             <p>Login with Discord</p>
         </button>
-    </a>)
+    </Link>)
 }
 
 export default async function Header(){
@@ -61,20 +67,20 @@ export default async function Header(){
     return(
         <div className={navbar.navbar}>
             <ul className={navbar.navbar__child}>
-                <a href="/">
+                <Link href="/">
                 <Image 
                 src={logoImg}
                 alt="flbduck"
                 width={250}
-                /></a>
-                <li><a href="/guides">Guides</a></li>
-                <li><a href="https://speedrun.com/deltarune/resources/" target="_blank">Resources</a></li>
-                <li><a href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">Retimer</a></li>
-                <li><a href="/about">About</a></li>
+                /></Link>
+                <li><Link href="/guides">Guides</Link></li>
+                <li><Link href="https://speedrun.com/deltarune/resources/" target="_blank">Resources</Link></li>
+                <li><Link href="https://nhaar.github.io/dr-ac-yt-retimer/" target="_blank">Retimer</Link></li>
+                <li><Link href="/about">About</Link></li>
             </ul>
             <ul className={navbar.navbar__child}>
-                <li><a href="/discord" target="_blank">Discord</a></li>
-                <li><a href="https://speedrun.com/deltarune" target="_blank">Speedrun.com</a></li>
+                <li><Link href="/discord" target="_blank">Discord</Link></li>
+                <li><Link href="https://speedrun.com/deltarune" target="_blank">Speedrun.com</Link></li>
                 {userStatus}
             </ul>
         </div>

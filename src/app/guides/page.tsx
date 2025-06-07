@@ -1,6 +1,7 @@
 import css from "@/app/css/guides/guidesPage.module.css"
 import Image from "next/image";
-
+import Link
+ from "next/link";
 export default async function Guides(){
 
     const res = await fetch(`http://${process.env.HOST}:${process.env.IP_PORT}/api/chapters/get`);
@@ -22,7 +23,7 @@ export default async function Guides(){
                 
                 <div key={chapter.chapterID} className={css.chapter}>
                 
-                    <a href={chapter.link}>
+                    <Link href={chapter.link}>
                 
                         <Image
                             src={chapter.chapterImage}
@@ -32,7 +33,7 @@ export default async function Guides(){
                         />
                         <p>{chapter.chapterName}</p>
                 
-                    </a>
+                    </Link>
                 
                 </div>
             ))}        

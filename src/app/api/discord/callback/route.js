@@ -8,8 +8,11 @@ import { cookies } from "next/headers";
 
 export async function GET(req){
     const codeResult = req.nextUrl.searchParams.get('code')
-    if(codeResult == undefined) return Response.json({results: "none"});
-
+    if(codeResult == undefined)  redirect("/")
+    var redirect_uri = `http://${process.env.HOST}:${process.env.IP_PORT}/api/discord/callback`
+    if(process.env.IP_DNS == "fastlittleboys.com"){
+        redirect_uri = `http://fastlittleboys.com/api/discord/callback`
+    }
     let options = {
         url: 'https://discord.com/api/oauth2/token',
         method: 'POST',
@@ -21,7 +24,7 @@ export async function GET(req){
             'client_secret': 'u9oSPXH-HL-V1obwnQ6q60udgO_LpkFY',
             'grant_type': 'authorization_code',
             'code': codeResult,
-            'redirect_uri': `http://${process.env.HOST}:${process.env.IP_PORT}/api/discord/callback`,
+            'redirect_uri': redirect_uri,
         })
     }
     let discord_data = await fetch('https://discord.com/api/oauth2/token', options).then((response) => {
