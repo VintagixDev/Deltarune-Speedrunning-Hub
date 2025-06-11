@@ -27,6 +27,8 @@ The code source and database structure of the Deltarune Speedrunning Hub
   - `PASSWORD`: The database's password
   - `DATABASE`: The schema of the project in your database
   - `IP_PORT`: the port the website is hosted on (`3000` by default)
+  - `DISCORD_CLIENT_ID`: Client id of your Discord application
+  - `DISCORD_CLIENT_SECRET`: Client secret of your Discord application
 
 # Contribution
 If you'd like to contribute to the project, feel free to fork it and propose changes!
