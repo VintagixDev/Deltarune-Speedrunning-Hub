@@ -20,8 +20,8 @@ export async function GET(req){
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: new URLSearchParams({
-            'client_id': '1377396893277225034',
-            'client_secret': 'u9oSPXH-HL-V1obwnQ6q60udgO_LpkFY',
+            'client_id': process.env.DISCORD_CLIENT_ID,
+            'client_secret': process.env.DISCORD_CLIENT_SECRET,
             'grant_type': 'authorization_code',
             'code': codeResult,
             'redirect_uri': redirect_uri,
