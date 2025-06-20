@@ -10,9 +10,11 @@ export async function GET(req){
     const codeResult = req.nextUrl.searchParams.get('code')
     if(codeResult == undefined)  redirect("/")
     var redirect_uri = `http://${process.env.HOST}:${process.env.IP_PORT}/api/discord/callback`
+
     if(process.env.IP_DNS == "fastlittleboys.com"){
         redirect_uri = `http://fastlittleboys.com/api/discord/callback`
     }
+    
     let options = {
         url: 'https://discord.com/api/oauth2/token',
         method: 'POST',
@@ -20,6 +22,7 @@ export async function GET(req){
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: new URLSearchParams({
+
             'client_id': process.env.DISCORD_CLIENT_ID,
             'client_secret': process.env.DISCORD_CLIENT_SECRET,
             'grant_type': 'authorization_code',
@@ -35,9 +38,7 @@ export async function GET(req){
     }).then((response) =>{
         return response.json();
     })
-    
     if(user.id != undefined){
-
 
         const dbConnection = await DBConnection()
 
