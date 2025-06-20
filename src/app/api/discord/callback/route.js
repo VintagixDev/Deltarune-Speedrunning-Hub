@@ -68,8 +68,8 @@ export async function GET(req){
             var cookie = await cookies();
             await cookie.set('session_token', sessionToken, {
                 httpOnly: false,
-                secure: false,
-                sameSite: 'strict',
+                secure: true,
+                sameSite: 'none',
                 maxAge:( 60 * 60 * 24 * 7), // 7 days
                 path: '/',
             });
