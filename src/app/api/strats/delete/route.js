@@ -22,8 +22,8 @@ export async function GET(request) {
 
         const dbConnection = await DBConnection()
 
-        const query = `DELETE FROM strats WHERE stratID = ${queryParams}`
-        await dbConnection.execute(query, [])
+        const query = `DELETE FROM strats WHERE stratID = ?`
+        await dbConnection.execute(query, [queryParams])
         console.log("STRAT DELETED")
         
         return NextResponse.json({ message: "strat deleted successfully", status: "SUCCESS" });

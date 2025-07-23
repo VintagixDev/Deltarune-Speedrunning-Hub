@@ -10,9 +10,9 @@ export async function GET(req){
     let query = "SELECT * FROM chapters" 
     
     if(queryParams != null){
-        query = `SELECT * from chapters WHERE chapterLink = "${queryParams}"`;
+        query = `SELECT * from chapters WHERE chapterLink = "?"`;
     }
-    const [results] = await connection.execute(query, [])
+    const [results] = await connection.execute(query, [queryParams])
     connection.end()
     return Response.json(results, {status: 200})
 }

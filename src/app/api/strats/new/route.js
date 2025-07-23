@@ -23,12 +23,14 @@ export async function POST(request) {
     return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
   }
   var query = `INSERT INTO strats(stratName, stratDescription, chapterID, sectionID, userID) values
-  ("${name}", "${markdown}", ${chapter}, ${section}, ${user.userID})`
+  ("?", "?", ?, ?, ?)`
+  let args = [name, markdown, chapter, section, user.userID];
   if(video){
     query = `INSERT INTO strats(stratName, stratDescription, stratVideo, chapterID, sectionID, userID) values
-  ("${name}", "${markdown}", "${video}", ${chapter}, ${section}, ${user.userID})`
+  ("?", "?", "?", ?, ?, ?)`
+    args = [name, markdown, video, chapter, section, user.userID];
   }
-  dbConnection.execute(query, [])
+  dbConnection.execute(query, args)
 
   return NextResponse.json({ message: "Guide created successfully" });
 }

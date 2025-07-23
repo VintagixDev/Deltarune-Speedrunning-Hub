@@ -10,19 +10,19 @@ export async function GET(req){
     const connection = await DBConnection()
     
     let query = "SELECT * FROM strats";
-    let arguments = [];
+    let args = [];
     
     if(chapterName != null){
         query = `SELECT strats.*, sections.*, userDisplayName FROM strats INNER JOIN sections ON strats.sectionID = sections.sectionID INNER JOIN users ON strats.userID = users.userID WHERE strats.chapterID = (SELECT chapterID FROM chapters WHERE chapterLink = "?") ORDER BY sectionListPriority;`;
-        arguments = [chapterName];
+        args = [chapterName];
     }
 
     if(stratID != null){
         query = `SELECT strats.*, userDisplayName, chapterLink, sectionName, sectionColor FROM strats INNER JOIN users ON strats.userID = users.userID INNER JOIN chapters ON strats.chapterID = chapters.chapterID INNER JOIN sections ON strats.sectionID = sections.sectionID WHERE stratID = ?;`;
-        arguments = [stratID];
+        args = [stratID];
     }
 
-    const [results] = await connection.execute(query, arguments)
+    const [results] = await connection.execute(query, args)
     connection.end()
     return Response.json(results, {status: 200})
 }
