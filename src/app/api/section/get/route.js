@@ -12,7 +12,7 @@ export async function GET(req){
     let args = [];
     
     if(queryParams != null){
-        query = `SELECT sections.* FROM sections WHERE chapterID = (SELECT chapterID from chapters where chapterLink = "?") ORDER BY sectionListPriority;`;
+        query = `SELECT sections.* FROM sections WHERE chapterID = (SELECT chapterID from chapters where chapterLink = ?) ORDER BY sectionListPriority;`;
         args = [queryParams];
     }
     const [results] = await connection.execute(query, args)

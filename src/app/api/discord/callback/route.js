@@ -48,7 +48,7 @@ export async function GET(req){
         const sessionToken = crypto.randomBytes(32).toString('hex');
         
         var query = `INSERT INTO users(userDisplayName, userName, userProfilePicture, userRole, discordID, session_token) values
-                    ("?", "?", "?", ?, "?", "?")`;
+                    (?, ?, ?, ?, ?, ?)`;
         let args = [user.global_name, user.username, profilePicture, 0, user.id, sessionToken]
         
         // Check if user is already in the database
@@ -60,7 +60,7 @@ export async function GET(req){
             
             // change query to update user's name, display name & profile picture
             console.log("user in database!")
-            query = `UPDATE users SET userDisplayName = "?", userName = "?", userProfilePicture = "?", session_token = "?" WHERE discordID = "?"`
+            query = `UPDATE users SET userDisplayName = ?, userName = ?, userProfilePicture = ?, session_token = ? WHERE discordID = ?`
             args = [user.global_name, user.username, profilePicture, sessionToken, user.id]
         }
         try{

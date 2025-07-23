@@ -13,7 +13,7 @@ export async function GET(req){
     let args = [];
     
     if(chapterName != null){
-        query = `SELECT strats.*, sections.*, userDisplayName FROM strats INNER JOIN sections ON strats.sectionID = sections.sectionID INNER JOIN users ON strats.userID = users.userID WHERE strats.chapterID = (SELECT chapterID FROM chapters WHERE chapterLink = "?") ORDER BY sectionListPriority;`;
+        query = `SELECT strats.*, sections.*, userDisplayName FROM strats INNER JOIN sections ON strats.sectionID = sections.sectionID INNER JOIN users ON strats.userID = users.userID WHERE strats.chapterID = (SELECT chapterID FROM chapters WHERE chapterLink = ?) ORDER BY sectionListPriority;`;
         args = [chapterName];
     }
 

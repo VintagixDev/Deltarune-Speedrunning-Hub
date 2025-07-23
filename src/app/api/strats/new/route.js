@@ -23,11 +23,11 @@ export async function POST(request) {
     return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
   }
   var query = `INSERT INTO strats(stratName, stratDescription, chapterID, sectionID, userID) values
-  ("?", "?", ?, ?, ?)`
+  (?, ?, ?, ?, ?)`
   let args = [name, markdown, chapter, section, user.userID];
   if(video){
     query = `INSERT INTO strats(stratName, stratDescription, stratVideo, chapterID, sectionID, userID) values
-  ("?", "?", "?", ?, ?, ?)`
+  (?, ?, ?, ?, ?, ?)`
     args = [name, markdown, video, chapter, section, user.userID];
   }
   dbConnection.execute(query, args)
