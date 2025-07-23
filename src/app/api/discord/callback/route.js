@@ -53,7 +53,7 @@ export async function GET(req){
         
         // Check if user is already in the database
         console.log("Checking if user is in the database...")
-        const [results] = await dbConnection.execute(`SELECT * from users WHERE discordID = "?"`, [user.id])
+        const [results] = await dbConnection.execute(`SELECT * from users WHERE discordID = ?`, [user.id])
         var expire = discord_data.expires_in
         // if user is in database
         if(results != ""){
