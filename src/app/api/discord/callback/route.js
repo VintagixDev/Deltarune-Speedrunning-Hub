@@ -48,22 +48,24 @@ export async function GET(req){
         const sessionToken = crypto.randomBytes(32).toString('hex');
         
         var query = `INSERT INTO users(userDisplayName, userName, userProfilePicture, userRole, discordID, session_token) values
-                    ("${user.global_name}", "${user.username}", "${profilePicture}", 0, "${user.id}", "${sessionToken}")`;
+                    (?, ?, ?, ?, ?, ?)`;
+        let args = [user.global_name, user.username, profilePicture, 0, user.id, sessionToken]
         
         // Check if user is already in the database
         console.log("Checking if user is in the database...")
-        const [results] = await dbConnection.execute(`SELECT * from users WHERE discordID = "${user.id}"`, [])
+        const [results] = await dbConnection.execute(`SELECT * from users WHERE discordID = ?`, [user.id])
         var expire = discord_data.expires_in
         // if user is in database
         if(results != ""){
             
             // change query to update user's name, display name & profile picture
             console.log("user in database!")
-            query = `UPDATE users SET userDisplayName = "${user.global_name}", userName = "${user.username}", userProfilePicture = "${profilePicture}", session_token = "${sessionToken}" WHERE discordID = "${user.id}"`
+            query = `UPDATE users SET userDisplayName = ?, userName = ?, userProfilePicture = ?, session_token = ? WHERE discordID = ?`
+            args = [user.global_name, user.username, profilePicture, sessionToken, user.id]
         }
         try{
 
-            await dbConnection.execute(query, [])
+            await dbConnection.execute(query, args)
             dbConnection.end()
             // Set user's cookies
             var cookie = await cookies();
